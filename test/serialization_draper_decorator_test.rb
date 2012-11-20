@@ -2,23 +2,23 @@ require 'test_helper'
 require 'draper'
 
 class Some
-	include ActiveModel::Serialization
+  include ActiveModel::Serialization
 
-	def title
-		"Some stored title"
-	end
+  def title
+    "Some stored title"
+  end
 end
 
 class SomeDecorator < Draper::Base
-	decorates :some
+  decorates :some
 
-	def title
-		"Some processed title"
-	end
+  def title
+    "Some processed title"
+  end
 end
 
 class SomeSerializer < ActiveModel::Serializer
-	attributes :title
+  attributes :title
 end
 
 class SerializationDraperDecoratorTest < ActionController::TestCase
