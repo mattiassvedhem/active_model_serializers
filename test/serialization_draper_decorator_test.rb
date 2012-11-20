@@ -27,12 +27,14 @@ end
 
 class SerializationDraperDecoratorTest < ActiveModel::TestCase
   def test_uses_overriden_methods
-    some_serialized = SomeSerializer.new(SomeDecorator.new(Some.new))
-    assert_equal SomeDecorator.new(Some.new).title, some_serialized.title
+    decorated_some = SomeDecorator.new(Some.new)
+    some_serialized = SomeSerializer.new(decorated_some)
+    assert_equal decorated_some.title, some_serialized.title
   end
 
   def test_uses_decorator_methods
-    some_serialized = SomeSerializer.new(SomeDecorator.new(Some.new))
-    assert_equal SomeDecorator.new(Some.new).name, some_serialized.name
+    decorated_some = SomeDecorator.new(Some.new)
+    some_serialized = SomeSerializer.new(decorated_some)
+    assert_equal decorated_some.name, some_serialized.name
   end
 end
